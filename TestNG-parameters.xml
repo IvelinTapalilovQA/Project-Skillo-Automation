@@ -1,0 +1,20 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Web test suite" verbose="1">
+    <test name="Parameter Test">
+        <classes>
+            <class name="ParameterTests">
+                <methods>
+                    <include name="testSingleParameter">
+                        <parameter name="full-name" value="Ivelin Tapalilov"></parameter>
+                    </include>
+                    <include name="testAddParameters">
+                        <parameter name="numberOne" value="2"></parameter>
+                        <parameter name="numberTwo" value="3"></parameter>
+                    </include>
+                    <include name="testOptionalParameter">
+                    </include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
