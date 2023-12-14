@@ -39,7 +39,7 @@ public class TextBox {
     }
 
     @Test
-    public void testMouseClickAndAlert() {
+    public void testContextMenu() {
 
         driver.get("https://the-internet.herokuapp.com/context_menu");
 
