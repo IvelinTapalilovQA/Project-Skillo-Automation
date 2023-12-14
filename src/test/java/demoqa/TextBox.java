@@ -39,7 +39,7 @@ public class TextBox {
     }
 
     @Test
-    public void testContextMenu() {
+    public void testBoxMenu() {
 
         driver.get("https://the-internet.herokuapp.com/context_menu");
 
