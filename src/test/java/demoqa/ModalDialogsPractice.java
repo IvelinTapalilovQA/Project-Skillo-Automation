@@ -45,7 +45,7 @@ public class ModalDialogsPractice {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='modal-dialog modal-sm']")));
-        WebElement modalDialog = driver.findElement(By.className("modal-dialog modal-sm"));
+        WebElement modalDialog = driver.findElement(By.xpath("//div[@class='modal-dialog modal-sm']"));
 
         WebElement modalBody = modalDialog.findElement(By.className("modal-body"));
         String modalTextContent = modalBody.getText();
