@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
@@ -64,8 +65,9 @@ public class DateFieldPractice {
         Assert.assertEquals(actualValue, expectedValue);
 
     }
-        @Test
-        public void testDateFieldTwo(){
+
+    @Test
+    public void testDateFieldTwo() {
 
         //Target -October 28, 1980 12:15 PM
 
@@ -89,11 +91,11 @@ public class DateFieldPractice {
         yearArrowOpen.click();
 
 
-        while (true){
+        while (true) {
             WebElement arrowDown = driver.findElement(By.xpath("//a[@class='react-datepicker__navigation react-datepicker__navigation--years react-datepicker__navigation--years-previous']"));
             arrowDown.click();
             WebElement yearOption = driver.findElement(By.xpath("//div[@class='react-datepicker__year-option'][7]"));
-            if(yearOption.getText().equals("1980")){
+            if (yearOption.getText().equals("1980")) {
                 yearOption.click();
                 break;
             }
@@ -105,7 +107,7 @@ public class DateFieldPractice {
         List<WebElement> hours = driver.findElements(By.xpath("//li[@class='react-datepicker__time-list-item ']"));
 
         for (WebElement hour : hours) {
-            if(hour.getText().equals("12:15")){
+            if (hour.getText().equals("12:15")) {
                 hour.click();
                 break;
             }
@@ -114,5 +116,10 @@ public class DateFieldPractice {
         String actualValue = dateField.getAttribute("value");
         String expectedValue = "October 28, 1980 12:15 PM";
         Assert.assertEquals(actualValue, expectedValue);
+    }
+
+    @AfterMethod
+    public void teardown() {
+        driver.quit();
     }
 }

@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
@@ -54,7 +55,7 @@ public class SliderPractice {
         expectedValue = "100";
         Assert.assertEquals(sliderValue, expectedValue);
 
-        actions.dragAndDropBy(sliderButton,-260, 0).perform();
+        actions.dragAndDropBy(sliderButton, -260, 0).perform();
 
         //Comparing the value from the button and the value after sliding to 0
         sliderValue = sliderButton.getAttribute("value");
@@ -63,8 +64,13 @@ public class SliderPractice {
 
         //Comparing the value from the button and the value from the value field
         String buttonValue = sliderButton.getAttribute("value");
-        String valueField =  sliderValueField.getAttribute("value");
+        String valueField = sliderValueField.getAttribute("value");
         Assert.assertEquals(buttonValue, valueField);
 
+    }
+
+    @AfterMethod
+    public void teardown() {
+        driver.quit();
     }
 }
