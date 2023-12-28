@@ -1,15 +1,38 @@
 package demoqa;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class AccordionPractice extends DemoqaObjectClass {
+public class AccordionPractice {
+
+    WebDriver driver;
+
+    @BeforeSuite
+    public void setupBeforeSuite() {
+        WebDriverManager.chromedriver().setup();
+    }
+
+    @BeforeMethod
+    public void setupForTest() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("Start-Maximized");
+        driver = new ChromeDriver(options);
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+    }
 
     @Test
     public void testAccordionCards() {
@@ -61,5 +84,9 @@ public class AccordionPractice extends DemoqaObjectClass {
                 "versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).");
 
         cartThree.click();
+    }
+    @AfterMethod
+    public void teardown() {
+        driver.quit();
     }
 }
